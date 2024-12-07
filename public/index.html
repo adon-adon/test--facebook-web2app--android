@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<meta name="description" content="Web site created using create-react-app" />
+		<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+		<title>React App</title>
+		<script src="Adjustscript.js"></script>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<script>
+			!(function (f, b, e, v, n, t, s) {
+				if (f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+				};
+				if (!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = "2.0";
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s);
+			})(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+			window.fbq("init", "937892961047628");
+			window.fbq("track", "PageView");
+		</script>
+		<script>
+			// get query string, and parse it with URLSearchParams
+			const urlParams = new URLSearchParams(window.location.search);
+			//p0 = urlParams.get("p0") and fallback to "default"
+			const p0 = urlParams.get("p0");
+			const p1 = urlParams.get("p1");
+			const p2 = urlParams.get("p2");
+			const p3 = urlParams.get("p3");
+			const p4 = urlParams.get("p4");
+			const p5 = urlParams.get("p5");
+			const p6 = urlParams.get("p6");
+			const fbPid = getFbPid();
+			const fbClickId = urlParams.get("fbclid");
+			let url = buildURL(p0, p1, p2, p3, p4, p5, p6, fbClickId, fbPid);
+			url = url + "&engagement_type=fallback_click&redirect=https://kl8bmn21.com/file/app/testAdjust.apk";
+			// add links
+			window.addEventListener("DOMContentLoaded", function () {
+				if (url) {
+					var elements = document.querySelectorAll(".AdjustTracker");
+					for (var i = 0; i < elements.length; i++) {
+						elements[i].setAttribute("href", url);
+					}
+				}
+			});
+
+			registerClick = function () {
+				window.fbq("track", "MyCustomEvent", { content_name: "register" });
+			};
+		</script>
+
+		<a href="https://app.adjust.com/tsyg2rj?engagement_type=fallback_click" class="AdjustTracker"> iOSCTAbutton </a>
+		<a href="https://app.adjust.com/10lgr669?engagement_type=fallback_click" class="AdjustTracker"> AndroidCTAbutton </a>
+		<button onclick="registerClick()">测试自定义事件</button>
+		<div id="root"></div>
+	</body>
+</html>
